@@ -1,6 +1,5 @@
 package com.alexktp.chaywela.ressource;
 
-import com.alexktp.chaywela.enums.Status;
 import com.alexktp.chaywela.model.Response;
 import com.alexktp.chaywela.model.Task;
 import com.alexktp.chaywela.service.implementation.TaskServiceImpl;
@@ -34,16 +33,14 @@ public class TaskRessource {
     }
 
     @PostMapping("/save")
-    public ResponseEntity<Response> saveTask(@RequestBody Task task){
-        if (task.getStartTime() == null )task.setStartTime(LocalDateTime.now());
-        if(task.getStatus() ==null) task.setStatus(Status.STARTED);
+    public ResponseEntity<Response> saveTask(@Valid @RequestBody Task task){
         return ResponseEntity.ok(
                 Response.builder()
                         .timeStamp(LocalDateTime.now())
                         .data(Map.of("Task", taskService.create(task)))
-                        .httpStatus(HttpStatus.CREATED)
-                        .message("Task created")
-                        .statuscode(HttpStatus.CREATED.value())
+                        .httpStatus(HttpStatus.OK)
+                        .message("task saved")
+                        .statuscode(HttpStatus.OK.value())
                         .build()
         );
     }

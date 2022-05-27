@@ -5,11 +5,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
 @Entity
@@ -22,12 +20,16 @@ public class Task {
     @GeneratedValue(strategy = GenerationType.AUTO)
     Long id;
 
-    @NotEmpty(message = "A task must have a description")
+    @NotEmpty(message = "A task must have a title")
+    String title;
+
     String description;
 
     LocalDateTime startTime;
     LocalDateTime finishTime;
 
+    @Enumerated(EnumType.ORDINAL)
+    @Column(name = "status")
     Status status;
 
     Long duration;
@@ -37,7 +39,7 @@ public class Task {
 
     Long estimatedTime;
 
-    @NotEmpty(message = "A task is related to a project")
+    @NotNull
     Long refProject;
 
 }

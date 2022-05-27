@@ -20,9 +20,10 @@ public class TaskServiceImpl implements TaskService {
 
     @Override
     public Task create(Task task) {
-        log.info("Creating a task: {}", task.getDescription());
+        log.info("Creating a task: {}", task.getTitle());
         return taskRepo.save(task);
     }
+
 
     @Override
     public Task get(Long id) {
@@ -32,7 +33,7 @@ public class TaskServiceImpl implements TaskService {
 
     @Override
     public Task update(Task task) {
-        log.info("Updating a task: {}", task.getId());
+        log.info("Updating a task: {}", task.getTitle());
         return taskRepo.save(task);
     }
 

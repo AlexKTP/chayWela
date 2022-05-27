@@ -1,6 +1,9 @@
 package com.alexktp.chaywela.model;
 
-import lombok.*;
+import com.alexktp.chaywela.enums.ProjectType;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
@@ -20,6 +23,10 @@ public class Project {
     String name;
 
     String description;
+
+    @Enumerated(EnumType.ORDINAL)
+    @Column(name = "project_type")
+    ProjectType projectType;
 
     Long refUser;
 
