@@ -20,7 +20,7 @@ public class TaskServiceImpl implements TaskService {
 
     @Override
     public Task create(Task task) {
-        log.info("Creating a task: {}", task.getId());
+        log.info("Creating a task: {}", task.getDescription());
         return taskRepo.save(task);
     }
 

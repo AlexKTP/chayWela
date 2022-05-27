@@ -8,6 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.Collection;
 
 @RequiredArgsConstructor
 @Service
@@ -40,5 +41,11 @@ public class UserServiceImpl implements UserService {
         log.info("Deleting a user by ID: {}", id);
         userRepo.deleteById(id);
         return Boolean.TRUE;
+    }
+
+    @Override
+    public Collection<User> getAll(int limit) {
+        log.info("Fetching all users");
+        return userRepo.findAll();
     }
 }

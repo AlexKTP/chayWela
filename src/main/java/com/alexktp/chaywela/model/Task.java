@@ -25,7 +25,6 @@ public class Task {
     @NotEmpty(message = "A task must have a description")
     String description;
 
-    @NotEmpty(message = "Starting time is required")
     LocalDateTime startTime;
     LocalDateTime finishTime;
 

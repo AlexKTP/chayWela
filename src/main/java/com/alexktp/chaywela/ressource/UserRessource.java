@@ -19,6 +19,19 @@ public class UserRessource {
 
     private final UserServiceImpl userService;
 
+    @GetMapping("/list")
+    public ResponseEntity<Response> getAllUsers(){
+        return ResponseEntity.ok(
+                Response.builder()
+                        .timeStamp(LocalDateTime.now())
+                        .data(Map.of("Users", userService.getAll(50)))
+                        .message("All users retrieved")
+                        .statuscode(HttpStatus.OK.value())
+                        .httpStatus(HttpStatus.OK)
+                        .build()
+        );
+    }
+
     @PostMapping("/save")
     public ResponseEntity<Response> saveUser(@Valid @RequestBody User user){
         return ResponseEntity.ok(
