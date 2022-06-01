@@ -58,7 +58,7 @@ public class UserRessource {
         );
     }
 
-    @PostMapping("/delete/{idUser}")
+    @DeleteMapping("/delete/{idUser}")
     public ResponseEntity<Response> deleteUser(@PathVariable("idUser") Long id){
         return ResponseEntity.ok(
                 Response.builder()

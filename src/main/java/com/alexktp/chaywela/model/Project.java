@@ -16,6 +16,7 @@ public class Project {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "project_id")
     Long id;
 
     @Column(unique = true)
@@ -28,6 +29,8 @@ public class Project {
     @Column(name = "project_type")
     ProjectType projectType;
 
-    Long refUser;
+    @OneToOne
+    @JoinColumn(name = "user_id")
+    User user;
 
 }

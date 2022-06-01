@@ -58,7 +58,7 @@ public class TaskRessource {
         );
     }
 
-    @PostMapping("/delete/{idTask}")
+    @DeleteMapping("/delete/{idTask}")
     public ResponseEntity<Response> deleteTask(@PathVariable("idTask")Long id){
         return ResponseEntity.ok(
                 Response.builder()

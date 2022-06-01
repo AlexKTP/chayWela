@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
 @Entity
@@ -39,7 +38,8 @@ public class Task {
 
     Long estimatedTime;
 
-    @NotNull
-    Long refProject;
+    @OneToOne
+    @JoinColumn(name = "project_id")
+    Project project;
 
 }
