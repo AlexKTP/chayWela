@@ -24,7 +24,7 @@ public class ChaywelaApplication {
 	@Bean
 	CommandLineRunner run(UserRepository userRepository, TaskRepository taskRepository){
 		return args -> {
-			userRepository.save(new User(null, "alex"));
+			userRepository.save(new User(null, "alex", "Android and BackEnd dev. I'm currently building a time tracking app. From France."));
 		};
 	}
 

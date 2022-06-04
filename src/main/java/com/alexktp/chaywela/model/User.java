@@ -21,4 +21,6 @@ public class User {
     @NotEmpty(message = "Username is required")
     String username;
 
+    String bio;
+
 }
