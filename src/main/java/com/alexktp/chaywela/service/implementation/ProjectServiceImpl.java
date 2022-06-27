@@ -8,7 +8,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @RequiredArgsConstructor
 @Service
@@ -47,5 +50,22 @@ public class ProjectServiceImpl implements ProjetService {
     public Collection<Project> getAll(int limit) {
         log.info("Fetching all projects");
         return projectRepo.findAll();
+    }
+
+    @Override
+    public Collection<Project> search(String request) {
+        log.info("Fetching projects by request: {}", request);
+        Collection result = new ArrayList();
+        Pattern pattern = Pattern.compile("\\d+");
+        Matcher matcher = pattern.matcher(request);
+        boolean isNumberOnly = matcher.find();
+        if(isNumberOnly) {
+            result.add(projectRepo.findById(Long.getLong(request)).get());
+            return result;
+        } else {
+            result.addAll(projectRepo.findByRequest(request));
+        }
+
+        return result;
     }
 }

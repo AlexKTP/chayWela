@@ -45,7 +45,7 @@ public class ProjectRessouce {
         );
     }
 
-    @PostMapping("/save")
+    @GetMapping("/save")
     public ResponseEntity<Response> saveProject(@RequestBody @Valid Project project){
         return ResponseEntity.ok(
                 Response.builder()
@@ -54,6 +54,19 @@ public class ProjectRessouce {
                         .message("Project created")
                         .httpStatus(HttpStatus.CREATED)
                         .statuscode(HttpStatus.CREATED.value())
+                        .build()
+        );
+    }
+
+    @PostMapping("/search")
+    public ResponseEntity<Response> searchProject(@RequestParam(name = "filter") String request){
+        return  ResponseEntity.ok(
+                Response.builder()
+                        .timeStamp(LocalDateTime.now())
+                        .data(Map.of("Projets", projectService.search(request)))
+                        .message("Projets found")
+                        .httpStatus(HttpStatus.OK)
+                        .statuscode(HttpStatus.OK.value())
                         .build()
         );
     }
