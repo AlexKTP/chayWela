@@ -24,7 +24,7 @@ public class UserRessource {
         return ResponseEntity.ok(
                 Response.builder()
                         .timeStamp(LocalDateTime.now())
-                        .data(Map.of("Users", userService.getAll(50)))
+                        .data(Map.of("objList", userService.getAll(50)))
                         .message("All users retrieved")
                         .statuscode(HttpStatus.OK.value())
                         .httpStatus(HttpStatus.OK)

@@ -63,7 +63,7 @@ public class ProjectServiceImpl implements ProjetService {
             result.add(projectRepo.findById(Long.getLong(request)).get());
             return result;
         } else {
-            result.addAll(projectRepo.findByRequest(request));
+            result.addAll(projectRepo.findByName(request));
         }
 
         return result;

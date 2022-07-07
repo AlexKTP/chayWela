@@ -12,7 +12,7 @@ import java.util.List;
 @Repository
 public interface ProjectRepository extends JpaRepository<Project, Long> {
 
-    @Query("select * from project p  where p.name like ?%")
-    List<Project> findByRequest(String request);
+    List<Project> findByName(String name);
+
 
 }
