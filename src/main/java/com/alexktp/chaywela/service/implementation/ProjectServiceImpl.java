@@ -39,6 +39,7 @@ public class ProjectServiceImpl implements ProjetService {
         return projectRepo.save(project);
     }
 
+
     @Override
     public Boolean delete(Long id) {
         log.info("Deleting project: {}", id);
@@ -48,9 +49,11 @@ public class ProjectServiceImpl implements ProjetService {
 
     @Override
     public Collection<Project> getAll(int limit) {
-        log.info("Fetching all projects");
-        return projectRepo.findAll();
+        log.info("Retrieving all projects");
+        Collection<Project> projects = projectRepo.findAll();
+        return projects;
     }
+
 
     @Override
     public Collection<Project> search(String request) {
@@ -60,10 +63,11 @@ public class ProjectServiceImpl implements ProjetService {
         Matcher matcher = pattern.matcher(request);
         boolean isNumberOnly = matcher.find();
         if(isNumberOnly) {
-            result.add(projectRepo.findById(Long.getLong(request)).get());
+            Long id = Long.parseLong(request);
+            result.add(projectRepo.findById(id));
             return result;
         } else {
-            result.addAll(projectRepo.findByName(request));
+            result.addAll(projectRepo.findByNameLike(request));
         }
 
         return result;

@@ -37,7 +37,7 @@ public class UserRessource {
         return ResponseEntity.ok(
                 Response.builder()
                         .timeStamp(LocalDateTime.now())
-                        .data(Map.of("User", userService.create(user)))
+                        .data(Map.of("objList", userService.create(user)))
                         .httpStatus(HttpStatus.OK)
                         .message("User saved")
                         .statuscode(HttpStatus.OK.value())
@@ -50,7 +50,7 @@ public class UserRessource {
         return ResponseEntity.ok(
                 Response.builder()
                         .timeStamp(LocalDateTime.now())
-                        .data(Map.of("User", userService.get(id)))
+                        .data(Map.of("objList", userService.get(id)))
                         .httpStatus(HttpStatus.OK)
                         .message("User retrieved")
                         .statuscode(HttpStatus.OK.value())
@@ -63,7 +63,7 @@ public class UserRessource {
         return ResponseEntity.ok(
                 Response.builder()
                         .timeStamp(LocalDateTime.now())
-                        .data(Map.of("User", userService.delete(id)))
+                        .data(Map.of("objList", userService.delete(id)))
                         .httpStatus(HttpStatus.OK)
                         .message("User deleted")
                         .statuscode(HttpStatus.OK.value())

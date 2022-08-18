@@ -1,6 +1,9 @@
 package com.alexktp.chaywela;
 
+import com.alexktp.chaywela.enums.ProjectType;
+import com.alexktp.chaywela.model.Project;
 import com.alexktp.chaywela.model.User;
+import com.alexktp.chaywela.repository.ProjectRepository;
 import com.alexktp.chaywela.repository.TaskRepository;
 import com.alexktp.chaywela.repository.UserRepository;
 import org.springframework.boot.CommandLineRunner;
@@ -22,9 +25,11 @@ public class ChaywelaApplication {
 	}
 
 	@Bean
-	CommandLineRunner run(UserRepository userRepository, TaskRepository taskRepository){
+	CommandLineRunner run(UserRepository userRepository, ProjectRepository projectRepository,TaskRepository taskRepository){
 		return args -> {
 			userRepository.save(new User(null, "alex", "Android and BackEnd dev. I'm currently building a time tracking app. From France."));
+			projectRepository.save(new Project(null,"Tracking app", "A simple tracking app", ProjectType.PRIVATE, new User(Long.parseLong("1"), null, null)));
+			projectRepository.save(new Project(null,"Blog", "A simple blog to document my IT journey",ProjectType.PRIVATE, new User(Long.parseLong("1"), null, null)));
 		};
 	}
 

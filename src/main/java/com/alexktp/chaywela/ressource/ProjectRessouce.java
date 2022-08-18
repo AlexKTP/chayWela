@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.time.LocalDateTime;
+import java.util.Collection;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -24,7 +26,7 @@ public class ProjectRessouce {
         return ResponseEntity.ok(
                 Response.builder()
                         .timeStamp(LocalDateTime.now())
-                        .data(Map.of("Projects", projectService.getAll(5)))
+                        .data(Map.of("objList", projectService.getAll(5)))
                         .httpStatus(HttpStatus.OK)
                         .message("Projects retrieved")
                         .statuscode(HttpStatus.OK.value())
@@ -37,7 +39,7 @@ public class ProjectRessouce {
         return ResponseEntity.ok(
                 Response.builder()
                         .timeStamp(LocalDateTime.now())
-                        .data(Map.of("Response", projectService.get(id)))
+                        .data(Map.of("objList", projectService.get(id)))
                         .httpStatus(HttpStatus.OK)
                         .statuscode(HttpStatus.OK.value())
                         .message("Project retrieved")
@@ -50,7 +52,7 @@ public class ProjectRessouce {
         return ResponseEntity.ok(
                 Response.builder()
                         .timeStamp(LocalDateTime.now())
-                        .data(Map.of("Project", projectService.create(project)))
+                        .data(Map.of("objList", projectService.create(project)))
                         .message("Project created")
                         .httpStatus(HttpStatus.CREATED)
                         .statuscode(HttpStatus.CREATED.value())
@@ -58,12 +60,12 @@ public class ProjectRessouce {
         );
     }
 
-    @PostMapping("/search")
-    public ResponseEntity<Response> searchProject(@RequestParam(name = "filter") String request){
+    @GetMapping("/search")
+    public ResponseEntity<Response> searchProject(@RequestParam(name = "request") String request){
         return  ResponseEntity.ok(
                 Response.builder()
                         .timeStamp(LocalDateTime.now())
-                        .data(Map.of("Projets", projectService.search(request)))
+                        .data(Map.of("objList", projectService.search(request)))
                         .message("Projets found")
                         .httpStatus(HttpStatus.OK)
                         .statuscode(HttpStatus.OK.value())
@@ -76,7 +78,7 @@ public class ProjectRessouce {
         return ResponseEntity.ok(
                 Response.builder()
                         .timeStamp(LocalDateTime.now())
-                        .data(Map.of("Project", projectService.delete(id)))
+                        .data(Map.of("objList", projectService.delete(id)))
                         .message("Project deleted")
                         .httpStatus(HttpStatus.OK)
                         .statuscode(HttpStatus.OK.value())

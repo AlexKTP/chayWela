@@ -24,7 +24,7 @@ public class TaskRessource {
         return ResponseEntity.ok(
                 Response.builder()
                         .timeStamp(LocalDateTime.now())
-                        .data(Map.of("Tasks", taskService.getAll(50)))
+                        .data(Map.of("objList", taskService.getAll(50)))
                         .httpStatus(HttpStatus.OK)
                         .message("Tasks retrieved")
                         .statuscode(HttpStatus.OK.value())
@@ -37,7 +37,7 @@ public class TaskRessource {
         return ResponseEntity.ok(
                 Response.builder()
                         .timeStamp(LocalDateTime.now())
-                        .data(Map.of("Task", taskService.create(task)))
+                        .data(Map.of("objList", taskService.create(task)))
                         .httpStatus(HttpStatus.OK)
                         .message("task saved")
                         .statuscode(HttpStatus.OK.value())
@@ -50,7 +50,7 @@ public class TaskRessource {
         return ResponseEntity.ok(
                 Response.builder()
                         .timeStamp(LocalDateTime.now())
-                        .data(Map.of("Task", taskService.get(id)))
+                        .data(Map.of("objList", taskService.get(id)))
                         .httpStatus(HttpStatus.OK)
                         .message("Tasks retrieved")
                         .statuscode(HttpStatus.OK.value())
@@ -63,7 +63,7 @@ public class TaskRessource {
         return ResponseEntity.ok(
                 Response.builder()
                         .timeStamp(LocalDateTime.now())
-                        .data(Map.of("Task", taskService.delete(id)))
+                        .data(Map.of("objList", taskService.delete(id)))
                         .httpStatus(HttpStatus.OK)
                         .message("Tasks deleted")
                         .statuscode(HttpStatus.OK.value())
