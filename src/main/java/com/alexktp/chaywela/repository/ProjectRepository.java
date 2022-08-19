@@ -11,9 +11,7 @@ import java.util.List;
 @Repository
 public interface ProjectRepository extends JpaRepository<Project, Long> {
 
-
     @Query("SELECT p FROM Project p WHERE p.name LIKE CONCAT('%',:name,'%') OR p.description LIKE CONCAT('%',:name,'%') ")
-    List<Project> findProjectsByRequest(@Param("name") String name);
-
+    List<Project> findProjectByUserRequest(@Param("name") String name);
 
 }

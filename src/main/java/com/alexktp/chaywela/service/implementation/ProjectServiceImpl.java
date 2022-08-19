@@ -67,10 +67,8 @@ public class ProjectServiceImpl implements ProjetService {
             result.add(projectRepo.findById(id));
             return result;
         } else {
-            Collection<Project> allProjects = projectRepo.findProjectsByRequest(request);
-            result.addAll(allProjects);
+            result.addAll(projectRepo.findProjectByUserRequest(request));
         }
-
         return result;
     }
 }

@@ -47,7 +47,7 @@ public class ProjectRessouce {
         );
     }
 
-    @GetMapping("/save")
+    @PostMapping("/save")
     public ResponseEntity<Response> saveProject(@RequestBody @Valid Project project){
         return ResponseEntity.ok(
                 Response.builder()
