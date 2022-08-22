@@ -10,8 +10,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.time.LocalDateTime;
-import java.util.Collection;
-import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -73,7 +71,7 @@ public class ProjectRessouce {
         );
     }
 
-    @DeleteMapping("project/{idProject}")
+    @DeleteMapping("project/delete/{idProject}")
     public ResponseEntity<Response> deleteProject(@PathVariable("idProject") Long id){
         return ResponseEntity.ok(
                 Response.builder()

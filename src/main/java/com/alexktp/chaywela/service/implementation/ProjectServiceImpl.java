@@ -5,6 +5,7 @@ import com.alexktp.chaywela.repository.ProjectRepository;
 import com.alexktp.chaywela.service.ProjetService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -50,7 +51,7 @@ public class ProjectServiceImpl implements ProjetService {
     @Override
     public Collection<Project> getAll(int limit) {
         log.info("Retrieving all projects");
-        Collection<Project> projects = projectRepo.findAll();
+        Collection<Project> projects = projectRepo.findAll(Sort.by(Sort.Direction.ASC, "id"));
         return projects;
     }
 
